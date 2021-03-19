@@ -3,9 +3,13 @@
     <div>
       <Logo />
       <h1 class="title">Hello World</h1>
-      <p v-for="post in posts" :key="post.id">
+      <nuxt-link
+        v-for="post in posts"
+        :key="post.id"
+        :to="'/articles/' + post.id"
+      >
         {{ post.title.rendered }}
-      </p>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -20,7 +24,7 @@ export default {
     }
   },
   mounted() {
-    apiService.getApiTest().then((res) => {
+    apiService.getAll().then((res) => {
       this.posts = res.data
     })
   },

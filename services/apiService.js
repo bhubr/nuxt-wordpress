@@ -11,7 +11,10 @@ const apiClient = axios.create({
 })
 
 export default {
-  getApiTest() {
+  getAll() {
     return apiClient.get(`/`)
+  },
+  getOneById(id) {
+    return apiClient.get(`/${id}`)
   },
 }
