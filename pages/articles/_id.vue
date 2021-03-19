@@ -1,6 +1,6 @@
 <template>
   <div v-if="article" class="container">
-    <h1 class="title">{{ article.title.rendered }}</h1>
+    <h1 class="title text-danger">{{ article.title.rendered }}</h1>
     <div v-html="article.content.rendered"></div>
   </div>
 </template>
