@@ -2,14 +2,21 @@
   <div class="container">
     <div>
       <Logo />
-      <h1 class="title">Hello World</h1>
-      <nuxt-link
+      <h1 class="title">Hello WP + Nuxt</h1>
+      <article
         v-for="post in posts"
         :key="post.id"
-        :to="'/articles/' + post.id"
       >
-        {{ post.title.rendered }}
-      </nuxt-link>
+        <h2 class="title text-danger">{{ post.title.rendered }}</h2>
+        <div v-html="post.content.rendered"></div>
+        <nuxt-link
+          class="btn btn-primary"
+          :key="post.id"
+          :to="'/articles/' + post.id"
+        >
+          Read in single page
+        </nuxt-link>
+      </article>
     </div>
   </div>
 </template>
@@ -23,10 +30,15 @@ export default {
       posts: [],
     }
   },
-  mounted() {
-    apiService.getAll().then((res) => {
-      this.posts = res.data
-    })
+  async asyncData(context) {
+    try {
+      return apiService.getAll()
+        .then(res => {
+          return { posts: res.data };
+        });
+    } catch (e) {
+      console.error("SOMETHING WENT WRONG :" + e);
+    }
   },
 }
 </script>

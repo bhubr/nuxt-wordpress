@@ -13,11 +13,19 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+//      { rel: 'stylesheet', type: 'text/css', href: 'https://www.benoithubert.tk/wp-includes/css/dist/block-library/style.min.css' },
+//      { rel: 'stylesheet', type: 'text/css', href: 'https://www.benoithubert.tk/wp-content/themes/twentyseventeen/assets/css/blocks.css' },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+ //   '@/assets/blocks.css'
+    '@/assets/style.min.css',
+    '@/assets/container.css',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -36,7 +44,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/bootstrap
-    'bootstrap-vue/nuxt',
+    // 'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
